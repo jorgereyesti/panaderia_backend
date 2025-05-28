@@ -9,5 +9,9 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="API Panadería Social")
 
+@app.get("/")
+def read_root():
+    return {"mensaje": "API Panadería Social activa"}
+
 app.include_router(routes_registro.router, prefix="/registro", tags=["Registro"])
 app.include_router(routes_produccion.router, prefix="/produccion", tags=["Producción"])
